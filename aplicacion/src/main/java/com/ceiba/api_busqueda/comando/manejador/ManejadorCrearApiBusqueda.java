@@ -15,9 +15,6 @@ public class ManejadorCrearApiBusqueda implements ManejadorComandoRespuesta<Coma
     private final FabricaApiBusqueda fabricaApiBusqueda;
     private final ServicioCrearApiBusqueda servicioCrearApiBusqueda;
 
-    private final String MERCADOLIBRECOLOMBIA = "MCO";
-    private final String MERCADOLIBREECUADOR = "MEC";
-
     public ManejadorCrearApiBusqueda(FabricaApiBusqueda fabricaApiBusqueda, ServicioCrearApiBusqueda servicioCrearApiBusqueda) {
         this.fabricaApiBusqueda = fabricaApiBusqueda;
         this.servicioCrearApiBusqueda = servicioCrearApiBusqueda;

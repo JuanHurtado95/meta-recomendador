@@ -5,9 +5,9 @@ import com.ceiba.busqueda.modelo.entidad.BusquedaAlmacenada;
 
 public interface IConsumoApi {
 
-    RespApiBusqueda crearBusquedaMCO(String palabra);
+    RespApiBusqueda crearBusquedaMCO(String palabra, int limite);
 
-    RespApiBusqueda crearBusquedaMEC(String palabra);
+    RespApiBusqueda crearBusquedaMEC(String palabra, int limite);
 
     String almacenarBusqueda(BusquedaAlmacenada busquedaAlmacenada);
 

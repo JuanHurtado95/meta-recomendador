@@ -24,7 +24,7 @@ public class ComandoControladorApiBusqueda {
     @PostMapping
     @ApiOperation("Realizar busqueda")
     public ComandoRespuesta<RespApiBusqueda> buscar(@RequestBody ComandoApiBusqueda comandoApiBusqueda) throws IOException {
-        return manejadorCrearApiBusqueda.ejecutar(comandoApiBusqueda);
+        return manejadorCrearApiBusqueda.ejecutar(comandoApiBusqueda); 
     }
 
 }

@@ -7,6 +7,7 @@ import com.ceiba.busqueda.servicio.ServicioCrearBusqueda;
 import com.ceiba.preferencia.puerto.repositorio.RepositorioPreferencia;
 import com.ceiba.preferencia.servicio.ServicioActualizarPreferencia;
 import com.ceiba.preferencia.servicio.ServicioCrearPreferencia;
+import com.ceiba.recomendacion.servicio.ServicioCrearRecomendacion;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -50,5 +51,10 @@ public class BeanServicio {
     @Bean
     public ServicioCrearApiBusqueda servicioCrearApiBusqueda(IConsumoApi iConsumoApi){
         return new ServicioCrearApiBusqueda(iConsumoApi);
+    }
+
+    @Bean
+    public ServicioCrearRecomendacion servicioCrearRecomendacion(IConsumoApi iConsumoApi){
+        return new ServicioCrearRecomendacion(iConsumoApi);
     }
 }

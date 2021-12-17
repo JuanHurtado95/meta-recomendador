@@ -15,6 +15,7 @@ public class ServicioCrearApiBusqueda {
     private RespApiBusqueda apiMCO;
     private RespApiBusqueda apiMEC;
     private final int PRECIO_DOLAR = 4000;
+    private final int LIMITE_DE_BUSQUEDA = 20;
     private BusquedaAlmacenada busquedaAlmacenada;
 
     public ServicioCrearApiBusqueda(IConsumoApi iConsumoApi) {
@@ -22,8 +23,8 @@ public class ServicioCrearApiBusqueda {
     }
 
     public RespApiBusqueda ejecutar(Busqueda busqueda){
-        apiMCO = this.iConsumoApi.crearBusquedaMCO(busqueda.getPalabraBuscada());
-        apiMEC = this.iConsumoApi.crearBusquedaMEC(busqueda.getPalabraBuscada());
+        apiMCO = this.iConsumoApi.crearBusquedaMCO(busqueda.getPalabraBuscada(), LIMITE_DE_BUSQUEDA);
+        apiMEC = this.iConsumoApi.crearBusquedaMEC(busqueda.getPalabraBuscada(), LIMITE_DE_BUSQUEDA);
         apiMCO.setResults(UnirRespApi(apiMCO.getResults(), apiMEC.getResults()));
 
         busquedaAlmacenada = new BusquedaAlmacenada(0L, busqueda.getIdUsuario(), busqueda.getPalabraBuscada(), apiMCO.getResults().get(0).getCategory_id());

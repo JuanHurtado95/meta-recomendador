@@ -12,19 +12,18 @@ public class pruebaRestTemp implements IConsumoApi {
 
     private final String MERCADOLIBRECOLOMBIA = "MCO";
     private final String MERCADOLIBREECUADOR = "MEC";
-    private final int LIMITE_DE_BUSQUEDA = 20;
 
     @Override
-    public RespApiBusqueda crearBusquedaMCO(String palabra) {
-        String url = "https://api.mercadolibre.com/sites/"+MERCADOLIBRECOLOMBIA+"/search?q="+palabra+"&limit="+LIMITE_DE_BUSQUEDA;
+    public RespApiBusqueda crearBusquedaMCO(String palabra, int limite) {
+        String url = "https://api.mercadolibre.com/sites/"+MERCADOLIBRECOLOMBIA+"/search?q="+palabra+"&limit="+limite;
         RestTemplate plantilla = new RestTemplate();
         RespApiBusqueda resultado = plantilla.getForObject(url, RespApiBusqueda.class);
         return resultado;
     }
 
     @Override
-    public RespApiBusqueda crearBusquedaMEC(String palabra) {
-        String url = "https://api.mercadolibre.com/sites/"+MERCADOLIBREECUADOR+"/search?q="+palabra+"&limit="+LIMITE_DE_BUSQUEDA;
+    public RespApiBusqueda crearBusquedaMEC(String palabra, int limite) {
+        String url = "https://api.mercadolibre.com/sites/"+MERCADOLIBREECUADOR+"/search?q="+palabra+"&limit="+limite;
         RestTemplate plantilla = new RestTemplate();
         RespApiBusqueda resultado = plantilla.getForObject(url, RespApiBusqueda.class);
         return resultado;
@@ -32,9 +31,16 @@ public class pruebaRestTemp implements IConsumoApi {
 
     @Override
     public String almacenarBusqueda(BusquedaAlmacenada busquedaAlmacenada) {
+
+        String palabra = busquedaAlmacenada.getPalabraBuscada();
+        String [] separadas = palabra.split(" ");
+        BusquedaAlmacenada primerPalabra = new BusquedaAlmacenada(0L, 0L, separadas[0], "");
+        System.out.println(separadas[1]);
+
         String url = "http://localhost:8083/meta-recomendador/busquedas";
         RestTemplate plantilla = new RestTemplate();
         String result = plantilla.postForObject(url, busquedaAlmacenada, String.class);
+        palabra = plantilla.postForObject(url, primerPalabra, String.class);
         return result;
     }
 }
