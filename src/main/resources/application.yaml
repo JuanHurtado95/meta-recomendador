@@ -12,10 +12,11 @@ server:
 
 spring:
    datasource:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:mysql://localhost:3306/meta-recomendador?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Bogota
-      username: root
-      password: 
+      jdbcUrl: jdbc:sqlserver://localhost;databaseName=recomendadordb
+      username: sa
+      password: SQL*2315020
       hikari:
          poolName: pool
+

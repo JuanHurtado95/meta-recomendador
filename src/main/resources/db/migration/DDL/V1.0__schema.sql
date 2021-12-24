@@ -1,29 +1,26 @@
 create table usuario (
- id int(11) not null auto_increment,
+ id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
  nombre varchar(100) not null,
  clave varchar(45) not null,
  correo varchar(45) not null,
  genero varchar(45) not null,
- edad int(11) not null,
- fecha_creacion date null,
- primary key (id)
+ edad int not null,
+ fecha_creacion date null
 );
 
 create table preferencia (
-   id int(11) not null auto_increment,
-   id_usuario int(11) not null,
-   menor_precio int(11),
-   valoracion_vendedor int(11),
-   envio_gratis int(11),
-   producto_nuevo int(11),
-   tienda_oficial int(11),
-   primary key (id)
+   id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+   id_usuario int not null,
+   menor_precio int,
+   valoracion_vendedor int,
+   envio_gratis int,
+   producto_nuevo int,
+   tienda_oficial int
 );
 
 create table busqueda (
-    id int(11) not null auto_increment,
-    id_usuario int(11),
+    id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    id_usuario int,
     palabra_buscada varchar(200) not null,
-    categoria varchar(200),
-    primary key (id)
+    categoria varchar(200)
 );

@@ -1,5 +1,6 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.api_busqueda.puerto.repositorio.IConsultaApi;
 import com.ceiba.api_busqueda.puerto.repositorio.IConsumoApi;
 import com.ceiba.api_busqueda.servicio.ServicioCrearApiBusqueda;
 import com.ceiba.busqueda.puerto.repositorio.RepositorioBusqueda;
@@ -7,6 +8,7 @@ import com.ceiba.busqueda.servicio.ServicioCrearBusqueda;
 import com.ceiba.preferencia.puerto.repositorio.RepositorioPreferencia;
 import com.ceiba.preferencia.servicio.ServicioActualizarPreferencia;
 import com.ceiba.preferencia.servicio.ServicioCrearPreferencia;
+import com.ceiba.recomendacion.servicio.ServicioConsultarRecomendacion;
 import com.ceiba.recomendacion.servicio.ServicioCrearRecomendacion;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
@@ -56,5 +58,10 @@ public class BeanServicio {
     @Bean
     public ServicioCrearRecomendacion servicioCrearRecomendacion(IConsumoApi iConsumoApi){
         return new ServicioCrearRecomendacion(iConsumoApi);
+    }
+
+    @Bean
+    public ServicioConsultarRecomendacion consultarRecomendacion(IConsultaApi iConsultaApi){
+        return new ServicioConsultarRecomendacion(iConsultaApi);
     }
 }

@@ -44,14 +44,19 @@ public class ServicioCrearApiBusqueda {
             return apiMCO;
         }
         for(int i=0;i<apiMCO.size();i++){
-            if(apiMCO.get(i).getCurrency_id().equals("USD")){
-                apiMCO.get(i).setPrice(apiMCO.get(i).getPrice()*PRECIO_DOLAR);
+            if(apiMCO.get(i).getCurrency_id() != null){
+                if(apiMCO.get(i).getCurrency_id().equals("USD")){
+                    apiMCO.get(i).setPrice(apiMCO.get(i).getPrice()*PRECIO_DOLAR);
+                    resp.add(apiMCO.get(i));
+                }
             }
-            if(apiMEC.get(i).getCurrency_id().equals("USD")){
-                apiMEC.get(i).setPrice(apiMEC.get(i).getPrice()*PRECIO_DOLAR);
+            if(apiMEC.get(i).getCurrency_id() != null){
+                if(apiMEC.get(i).getCurrency_id().equals("USD")){
+                    apiMEC.get(i).setPrice(apiMEC.get(i).getPrice()*PRECIO_DOLAR);
+                    resp.add(apiMEC.get(i));
+                }
             }
-            resp.add(apiMCO.get(i));
-            resp.add(apiMEC.get(i));
+
         }
 
         return resp;

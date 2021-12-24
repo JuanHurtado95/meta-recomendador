@@ -8,6 +8,7 @@ import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,7 @@ public class UsuarioTest {
     @DisplayName("Deberia crear correctamente el usuario")
     void deberiaCrearCorrectamenteElUsusuario() {
         // arrange
-        LocalDateTime fechaCreacion = LocalDateTime.now();
+        LocalDate fechaCreacion = LocalDate.now();
         //act
         Usuario usuario = new UsuarioTestDataBuilder().conFechaCreacion(fechaCreacion).conId(1L).build();
         //assert

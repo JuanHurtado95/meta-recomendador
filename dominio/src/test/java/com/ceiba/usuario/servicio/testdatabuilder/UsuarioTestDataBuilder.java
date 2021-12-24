@@ -2,19 +2,23 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class UsuarioTestDataBuilder {
 
     private Long id;
-    private String nombreUsuario;
+    private String nombre;
     private String clave;
-    private LocalDateTime fecha;
+    private String correo;
+    private String genero;
+    private int edad;
+    private LocalDate fechaCreacion;
 
     public UsuarioTestDataBuilder() {
-        nombreUsuario = "1234";
+        nombre = "1234";
         clave = "1234";
-        fecha = LocalDateTime.now();
+        fechaCreacion = LocalDate.now();
     }
 
     public UsuarioTestDataBuilder conClave(String clave) {
@@ -27,17 +31,17 @@ public class UsuarioTestDataBuilder {
         return this;
     }
 
-    public UsuarioTestDataBuilder conFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fecha = fechaCreacion;
+    public UsuarioTestDataBuilder conFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
         return this;
     }
 
     public UsuarioTestDataBuilder conNombre(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+        this.nombre = nombreUsuario;
         return this;
     }
 
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+        return new Usuario(id,nombre, clave, correo, genero, edad, fechaCreacion);
     }
 }

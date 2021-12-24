@@ -34,8 +34,8 @@ public class pruebaRestTemp implements IConsumoApi {
 
         String palabra = busquedaAlmacenada.getPalabraBuscada();
         String [] separadas = palabra.split(" ");
-        BusquedaAlmacenada primerPalabra = new BusquedaAlmacenada(0L, 0L, separadas[0], "");
-        System.out.println(separadas[1]);
+        BusquedaAlmacenada primerPalabra = new BusquedaAlmacenada(0L, busquedaAlmacenada.getIdUsuario(), separadas[0], "");
+        System.out.println(separadas[0]);
 
         String url = "http://localhost:8083/meta-recomendador/busquedas";
         RestTemplate plantilla = new RestTemplate();
