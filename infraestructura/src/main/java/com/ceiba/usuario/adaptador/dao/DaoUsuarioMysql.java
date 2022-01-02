@@ -6,6 +6,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.usuario.puerto.dao.DaoUsuario;
 
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.usuario.modelo.dto.DtoUsuario;
@@ -18,6 +19,9 @@ public class DaoUsuarioMysql implements DaoUsuario {
     @SqlStatement(namespace="usuario", value="listar")
     private static String sqlListar;
 
+    @SqlStatement(namespace="usuario", value="infoUsuario")
+    private static String sqlInfoUsuario;
+
     public DaoUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -26,4 +30,5 @@ public class DaoUsuarioMysql implements DaoUsuario {
     public List<DtoUsuario> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoUsuario());
     }
+
 }

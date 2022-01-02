@@ -1,6 +1,9 @@
 package com.ceiba.usuario.puerto.repositorio;
 
+import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import com.ceiba.usuario.modelo.entidad.Usuario;
+
+import java.util.List;
 
 public interface RepositorioUsuario {
     /**
@@ -34,5 +37,7 @@ public interface RepositorioUsuario {
      * @return si existe o no
      */
     boolean existePorId(Long id);
+
+    List<DtoUsuario> infoUsuario(String clave, String correo);
 
 }

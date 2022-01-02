@@ -14,6 +14,7 @@ public class ServicioCrearApiBusqueda {
     private final IConsumoApi iConsumoApi;
     private RespApiBusqueda apiMCO;
     private RespApiBusqueda apiMEC;
+    private RespApiBusqueda resp;
     private final int PRECIO_DOLAR = 4000;
     private final int LIMITE_DE_BUSQUEDA = 20;
     private BusquedaAlmacenada busquedaAlmacenada;
@@ -37,25 +38,45 @@ public class ServicioCrearApiBusqueda {
 
         List<ResultMCO> resp = new ArrayList<>();
 
+        int list;
+        boolean tamaño;
+
+        if(apiMCO.size()>apiMEC.size()){
+            list = apiMEC.size();
+            tamaño = true;
+        }else{
+            list = apiMCO.size();
+            tamaño = false;
+        }
+
         if(apiMCO == null){
             return apiMEC;
         }
         if(apiMEC == null){
             return apiMCO;
         }
-        for(int i=0;i<apiMCO.size();i++){
-            if(apiMCO.get(i).getCurrency_id() != null){
-                if(apiMCO.get(i).getCurrency_id().equals("USD")){
-                    apiMCO.get(i).setPrice(apiMCO.get(i).getPrice()*PRECIO_DOLAR);
-                    resp.add(apiMCO.get(i));
-                }
+        for(int i=0;i<list;i++){
+            if(apiMCO.get(i).getCurrency_id().equals("USD")){
+                apiMCO.get(i).setPrice(apiMCO.get(i).getPrice()*PRECIO_DOLAR);
             }
-            if(apiMEC.get(i).getCurrency_id() != null){
-                if(apiMEC.get(i).getCurrency_id().equals("USD")){
+
+            if(apiMEC.get(i).getCurrency_id().equals("USD")){
                     apiMEC.get(i).setPrice(apiMEC.get(i).getPrice()*PRECIO_DOLAR);
-                    resp.add(apiMEC.get(i));
+            }
+            if((list-1)==i){
+                if(tamaño){
+                    for(int j=i;j<apiMCO.size();j++){
+                        resp.add(apiMCO.get(j));
+                    }
+                }else {
+                    for(int j=i;j<apiMEC.size();j++){
+                        resp.add(apiMEC.get(j));
+                    }
                 }
             }
+
+            resp.add(apiMCO.get(i));
+            resp.add(apiMEC.get(i));
 
         }
 

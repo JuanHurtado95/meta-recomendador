@@ -1,5 +1,6 @@
 package com.ceiba.usuario.consulta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ceiba.usuario.puerto.dao.DaoUsuario;
@@ -11,10 +12,12 @@ import com.ceiba.usuario.modelo.dto.DtoUsuario;
 public class ManejadorListarUsuarios {
 
     private final DaoUsuario daoUsuario;
+    List<DtoUsuario> listUsuario;
 
     public ManejadorListarUsuarios(DaoUsuario daoUsuario){
         this.daoUsuario = daoUsuario;
     }
 
     public List<DtoUsuario> ejecutar(){ return this.daoUsuario.listar(); }
+
 }
