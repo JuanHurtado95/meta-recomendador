@@ -14,7 +14,7 @@ import java.io.IOException;
 @RequestMapping("/recomendacion")
 @Api(tags = { "Controlador comando recomendacion"})
 public class ComandoControladorRecomendacion {
-
+/*
     private final ManejadorCrearRecomendacion manejadorCrearRecomendacion;
 
     public ComandoControladorRecomendacion(ManejadorCrearRecomendacion manejadorCrearRecomendacion) {
@@ -25,6 +25,6 @@ public class ComandoControladorRecomendacion {
     @ApiOperation("Realizar recomendacion")
     public ComandoRespuesta<RespApiBusqueda> recomendar(@RequestBody ComandoRecomendacion comandoRecomendacion) throws IOException {
         return manejadorCrearRecomendacion.ejecutar(comandoRecomendacion);
-    }
+    }*/
 
 }

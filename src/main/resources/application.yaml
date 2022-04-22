@@ -14,9 +14,9 @@ spring:
    datasource:
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:sqlserver://localhost;databaseName=recomendadordb
-      username: sa
-      password: SQL*2315020
+      jdbcUrl: jdbc:sqlserver://34.133.246.146;databaseName=recomendadordb
+      username: sqlserver
+      password: admin
       hikari:
          poolName: pool
 

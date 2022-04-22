@@ -15,5 +15,4 @@ public class FabricaBusqueda {
                 comandoBusqueda.getCategoria()
         );
     }
-
 }

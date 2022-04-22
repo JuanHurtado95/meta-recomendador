@@ -16,6 +16,9 @@ public class DaoRecomendacionMysql implements DaoRecomendacion {
     @SqlStatement(namespace="recomendacion", value="consultar")
     private static String sqlConsultar;
 
+    @SqlStatement(namespace="recomendacion", value="filtradoColaborativo")
+    private static String sqlFC;
+
     public DaoRecomendacionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -26,5 +29,13 @@ public class DaoRecomendacionMysql implements DaoRecomendacion {
         paramSource.addValue("idUsuario", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlConsultar, paramSource, new MapeoRecomendacion());
+    }
+
+    @Override
+    public List<String> filtradoColaborativo(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idUsuario", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlFC, paramSource, new MapeoRecomendacion());
     }
 }

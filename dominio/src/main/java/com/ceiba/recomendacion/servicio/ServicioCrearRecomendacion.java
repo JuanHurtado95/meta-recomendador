@@ -6,7 +6,6 @@ import com.ceiba.api_busqueda.puerto.repositorio.IConsumoApi;
 import com.ceiba.recomendacion.modelo.entidad.Recomendacion;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ServicioCrearRecomendacion {

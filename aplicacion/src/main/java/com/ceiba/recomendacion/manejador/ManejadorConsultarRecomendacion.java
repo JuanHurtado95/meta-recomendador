@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class ManejadorConsultarRecomendacion implements ManejadorComandoRespuesta<ComandoConsultarRecomendacion, ComandoRespuesta<RespApiBusqueda>> {
@@ -32,8 +33,25 @@ public class ManejadorConsultarRecomendacion implements ManejadorComandoRespuest
         json = this.daoRecomendacion.consultar(comandoConsultarRecomendacion.getIdUsuario());
         String js = json.get(0);
         List<String> r = new ArrayList<String>(Arrays.asList(js.split(",")));
-        Recomendacion recomendacion = new Recomendacion(r);
+        Recomendacion recomendacion = new Recomendacion(recomendacionRuletaFC(r, comandoConsultarRecomendacion.getIdUsuario()));
         return new ComandoRespuesta<>(this.servicioCrearRecomendacion.ejecutar(recomendacion));
 //        return new ComandoRespuesta<>(this.consultarRecomendacion.ejecutar(json));
+    }
+
+    private List<String> recomendacionRuletaFC (List<String> recomendaciones, Long id){
+        Random claseRandom = new Random();
+        String r1, r2;
+
+        List<String> fC = this.daoRecomendacion.filtradoColaborativo(id);
+        r1 = fC.get(claseRandom.nextInt(fC.size()));
+
+        do {
+            r2 = fC.get(claseRandom.nextInt(fC.size()));
+        } while (r1.equals(r2));
+
+        recomendaciones.set(1,r1);
+        recomendaciones.set(2,r2);
+
+        return recomendaciones;
     }
 }

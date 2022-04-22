@@ -5,6 +5,8 @@ import com.ceiba.api_busqueda.puerto.repositorio.IConsumoApi;
 import com.ceiba.api_busqueda.servicio.ServicioCrearApiBusqueda;
 import com.ceiba.busqueda.puerto.repositorio.RepositorioBusqueda;
 import com.ceiba.busqueda.servicio.ServicioCrearBusqueda;
+import com.ceiba.feedback_implicito.puerto.RepositorioFeedBack;
+import com.ceiba.feedback_implicito.servicio.ServicioCrearFeedBack;
 import com.ceiba.preferencia.puerto.repositorio.RepositorioPreferencia;
 import com.ceiba.preferencia.servicio.ServicioActualizarPreferencia;
 import com.ceiba.preferencia.servicio.ServicioCrearPreferencia;
@@ -69,5 +71,10 @@ public class BeanServicio {
     @Bean
     public ServicioConsultarRecomendacion consultarRecomendacion(IConsultaApi iConsultaApi){
         return new ServicioConsultarRecomendacion(iConsultaApi);
+    }
+
+    @Bean
+    public ServicioCrearFeedBack servicioCrearFeedBack(RepositorioFeedBack repositorioFeedBack){
+        return new ServicioCrearFeedBack(repositorioFeedBack);
     }
 }
