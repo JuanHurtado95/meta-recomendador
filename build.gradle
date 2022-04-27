@@ -87,6 +87,7 @@ dependencies {
 	
 	implementation project.ext.springbootundertow
 	implementation project.ext.flyway
+	implementation 'com.google.cloud:google-cloud-logging-logback:0.123.10-alpha'
 
 	implementation project(':infraestructura')
 
